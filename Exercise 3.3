@@ -1,0 +1,31 @@
+r <- 10
+c <- 100000
+
+set seed(1234)
+my.data <- matrix(rnorm(r*c),nrow=r)
+dframe <- data.frame(my.data)
+
+mean_col <- numeric(c)
+
+time1 <-as.numeric(Sys.time())
+time1
+
+for(i in 1:c)
+{
+	mean_col[i] <- mean(dframe[[i]])
+	
+}
+
+time2 <-as.numeric(Sys.time())
+time2
+
+print(time2-time1)
+
+time3 <-as.numeric(Sys.time())
+sapply(dframe,mean)
+time4 <-as.numeric(Sys.time())
+
+print(time4-time3)
+
+(time2-time1)/(time4-time3)
+
